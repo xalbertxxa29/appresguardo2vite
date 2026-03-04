@@ -15,6 +15,12 @@ const firebaseConfig = {
     measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
+if (!firebaseConfig.apiKey) {
+    console.error("❌ ERROR: No se detectó la API Key de Firebase. Verifica tus GitHub Secrets.");
+} else {
+    console.log("✅ Firebase Config cargada parcialmente.");
+}
+
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
