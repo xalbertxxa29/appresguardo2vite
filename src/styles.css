@@ -10,8 +10,8 @@
   --gray-300: #ccc;
   --radius: 14px;
   --tr: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-  --siren-color: #64B5F6;
-  --siren-rgb: 100, 181, 246;
+  --siren-color: #999;
+  --siren-rgb: 153, 153, 153;
   --color-primary: #1565C0;
 }
 
@@ -133,7 +133,7 @@ body::after {
   height: 12px;
   border-radius: 50%;
   background: var(--siren-color);
-  box-shadow: 0 0 8px rgba(100, 181, 246, 0.8), 0 0 16px rgba(100, 181, 246, 0.5);
+  box-shadow: 0 0 8px rgba(var(--siren-rgb), 0.8), 0 0 16px rgba(var(--siren-rgb), 0.5);
   animation: siren-strobe 0.5s steps(2, start) infinite;
 }
 
