@@ -1,0 +1,77 @@
+<!-- evidencia-ejercicios.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evidencia de Ejercicios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/evidencia-ejercicios.css" />
+    <link rel="stylesheet" href="./src/loader-overlay.css" />
+</head>
+
+<body>
+    <!-- Capa de puntos de fondo -->
+    <div class="bg-layer"></div>
+
+    <!-- Tarjeta principal -->
+    <div class="evi-card">
+
+        <!-- Encabezado -->
+        <div class="evi-header">
+            <div class="evi-badge">
+                <span class="badge-dot"></span>
+                Registro de Actividad
+            </div>
+            <h1 id="welcome-message" class="evi-name">Cargando...</h1>
+        </div>
+
+        <!-- Selector de rutina -->
+        <div class="field-group">
+            <label class="field-label" for="rutina-select">
+                <span class="label-icon">🏋️</span>
+                Elige Rutina
+            </label>
+            <div class="select-wrapper">
+                <select id="rutina-select" required>
+                    <option value="">Selecciona una rutina...</option>
+                    <option value="fuerza">💪 Fuerza</option>
+                    <option value="cardio">🏃 Cardio</option>
+                    <option value="flexibilidad">🧘 Flexibilidad</option>
+                </select>
+                <span class="select-arrow">▼</span>
+            </div>
+        </div>
+
+        <!-- Preview de foto -->
+        <div id="photo-preview-container" class="photo-preview-wrap">
+            <div class="photo-placeholder" id="photo-placeholder">
+                <span class="placeholder-icon">📷</span>
+                <p>Sin foto adjunta</p>
+            </div>
+            <img id="photo-preview" alt="Previsualización de ejercicio" />
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="action-grid">
+            <button id="camera-btn" class="btn btn-camera">
+                <span class="btn-icon">📷</span>
+                <span>Tomar Foto</span>
+            </button>
+            <button id="enviar-btn" class="btn btn-send">
+                <span class="btn-icon">📤</span>
+                <span>Enviar</span>
+            </button>
+        </div>
+
+        <button id="back-btn" class="btn btn-back">
+            ← Volver al Menú
+        </button>
+    </div>
+
+    <script type="module" src="./src/evidencia-ejercicios.js"></script>
+</body>
+
+</html>

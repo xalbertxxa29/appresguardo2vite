@@ -1,0 +1,68 @@
+<!-- reporte-incidencias.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporte de Incidencias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/reporte-incidencias.css" />
+    <link rel="stylesheet" href="./src/loader-overlay.css" />
+</head>
+
+<body>
+    <!-- Capa de fondo -->
+    <div class="bg-layer"></div>
+
+    <!-- Tarjeta principal -->
+    <div class="report-card">
+
+        <!-- Header -->
+        <div class="card-header">
+            <div class="header-badge">
+                <span class="badge-dot"></span>
+                Reporte de Incidencias
+            </div>
+            <h1 id="welcome-message" class="welcome-name">Cargando...</h1>
+        </div>
+
+        <!-- Textarea descripción -->
+        <div class="field-group">
+            <label class="field-label" for="desc-textarea">
+                <span class="label-icon">📋</span>
+                Descripción de la incidencia
+            </label>
+            <textarea id="desc-textarea" rows="5"
+                placeholder="Describe aquí lo sucedido con el mayor detalle posible..." required>
+            </textarea>
+        </div>
+
+        <!-- Preview de foto -->
+        <div id="photo-preview-container" class="photo-preview-wrap">
+            <img id="photo-preview" alt="Previsualización de foto" />
+            <p id="photo-hint" class="photo-hint">Sin foto adjunta</p>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="action-buttons">
+            <button id="camera-btn" class="btn btn-camera">
+                <span class="btn-icon">📷</span>
+                <span>Tomar Foto</span>
+            </button>
+            <button id="enviar-btn" class="btn btn-send">
+                <span class="btn-icon">📤</span>
+                <span>Enviar Reporte</span>
+            </button>
+        </div>
+
+        <button id="back-btn" class="btn btn-back">
+            ← Volver al Menú
+        </button>
+    </div>
+
+    <script type="module" src="./src/reporte-incidencias.js"></script>
+</body>
+
+</html>

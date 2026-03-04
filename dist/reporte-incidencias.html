@@ -1,0 +1,33 @@
+<!-- reporte-incidencias.html -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporte de Incidencias</title>
+  <script type="module" crossorigin src="/assets/reporteIncidencias-CKo74JmC.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/firebase-config-CZqFWkal.js">
+  <link rel="modulepreload" crossorigin href="/assets/loader-overlay-BlexRQPy.js">
+  <link rel="stylesheet" crossorigin href="/assets/reporteIncidencias-CuqeDunL.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h1 id="welcome-message">Cargando...</h1>
+
+        <label for="desc-textarea">Descripción de la incidencia</label>
+        <textarea id="desc-textarea" rows="5" placeholder="Escribe aquí la descripción..." required></textarea>
+
+        <div id="photo-preview-container">
+            <img id="photo-preview" alt="Previsualización" />
+        </div>
+
+        <button id="camera-btn" class="evi-btn camera-btn">📷 Cámara</button>
+        <button id="enviar-btn" class="evi-btn enviar-btn">📤 Enviar</button>
+        <button id="back-btn" class="evi-btn back-btn">↩️ Atrás</button>
+    </div>
+
+</body>
+
+</html>

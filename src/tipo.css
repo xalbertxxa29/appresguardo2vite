@@ -1,0 +1,257 @@
+/* =====================================================
+   tipo.css — Azul Corporativo + Blanco
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+  --primary: #1565C0;
+  --primary-dark: #0D47A1;
+  --accent: #64B5F6;
+  --text: #f0f6ff;
+  --tr: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(160deg, #020d1f 0%, #051a3a 50%, #020a18 100%);
+}
+
+.bg-image {
+  position: fixed;
+  inset: 0;
+  background: url('/assets/image.png') center/cover no-repeat;
+  animation: zoom 20s ease-in-out infinite;
+  z-index: -2;
+  opacity: 0.3;
+}
+
+@keyframes zoom {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.07);
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(21, 101, 192, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(13, 71, 161, 0.15) 0%, transparent 55%),
+    rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 90%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 24px;
+  padding: clamp(1.5rem, 6vw, 2.5rem);
+  text-align: center;
+  color: var(--text);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: fadeIn 0.8s ease-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.container-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin: 0 auto 1.2rem;
+  display: block;
+  filter: drop-shadow(0 0 14px rgba(21, 101, 192, 0.7));
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px rgba(21, 101, 192, 0.5));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 22px rgba(100, 181, 246, 0.9));
+  }
+}
+
+.welcome-message {
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+h1 {
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 15px rgba(21, 101, 192, 0.4);
+  letter-spacing: -0.5px;
+}
+
+.tipo-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 2rem;
+  letter-spacing: 0.5px;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.btn {
+  flex: 1 1 130px;
+  position: relative;
+  overflow: hidden;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform var(--tr), box-shadow var(--tr);
+  animation: btnIn 0.5s ease both;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.btn:hover::after {
+  opacity: 1;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+@keyframes btnIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Resguardo — Azul principal */
+.btn-resguardo {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(21, 101, 192, 0.45);
+  animation-delay: 0.4s;
+}
+
+.btn-resguardo:hover {
+  box-shadow: 0 14px 35px rgba(21, 101, 192, 0.7);
+}
+
+/* Conductor — Azul claro/cyan */
+.btn-conductor {
+  background: linear-gradient(135deg, #29B6F6, #0288D1);
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(2, 136, 209, 0.45);
+  animation-delay: 0.5s;
+}
+
+.btn-conductor:hover {
+  box-shadow: 0 14px 35px rgba(2, 136, 209, 0.7);
+}
+
+/* Atrás */
+.btn-back {
+  flex: none;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  padding: 0.65rem 1.5rem;
+  border-radius: 12px;
+  animation-delay: 0.6s;
+}
+
+.btn-back:hover {
+  background: rgba(21, 101, 192, 0.15);
+  border-color: rgba(21, 101, 192, 0.35);
+  color: #fff;
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 400px) {
+  .container {
+    border-radius: 18px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn {
+    flex: none;
+    width: 100%;
+  }
+}

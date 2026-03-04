@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú Principal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/menu-BJgCRLOp.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/firebase-config-CZqFWkal.js">
+  <link rel="modulepreload" crossorigin href="/assets/loader-overlay-BlexRQPy.js">
+  <link rel="stylesheet" crossorigin href="/assets/menu-ElZuCHpd.css">
+  <link rel="stylesheet" crossorigin href="/assets/loader-overlay-smOjf_h8.css">
+</head>
+
+<body>
+    <div class="menu-container">
+
+        <div class="status-wrapper">
+            <span class="siren"></span>
+            <h2 id="status-message">
+                <span class="welcome-text">Cargando registros...</span>
+            </h2>
+        </div>
+
+        <div class="menu-buttons">
+            <button class="menu-button" id="checklist-btn">
+                <span class="icon">✅</span>
+                <span class="text">CHECK LIST</span>
+            </button>
+            <button class="menu-button" id="plan-ejercicios-btn">
+                <span class="icon">🏋️‍♂️</span>
+                <span class="text">PLAN DE EJERCICIOS</span>
+            </button>
+            <button class="menu-button" id="contactos-btn">
+                <span class="icon">📞</span>
+                <span class="text">CONTACTOS DE EMERGENCIA</span>
+            </button>
+            <button class="menu-button" id="evidencia-ejercicios-btn">
+                <span class="icon">📸</span>
+                <span class="text">Evidencia de Ejercicios</span>
+            </button>
+            <button class="menu-button" id="reporte-incidencias-btn">
+                <span class="icon">📝</span>
+                <span class="text">Reporte de Incidencias</span>
+            </button>
+            <button class="menu-button" id="logout-btn">
+                <span class="icon">🔒</span>
+                <span class="text">Cerrar Sesión</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay Verificando Sesión (usa el loader global) -->
+    <div id="checking-session-overlay"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 3000; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
+        <div class="spinner"
+            style="border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid #e53935; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin-bottom: 20px;">
+        </div>
+        <h2>Verificando turno...</h2>
+    </div>
+
+    <!-- Modal de Inicio de Labores -->
+    <div id="start-work-modal" class="modal-overlay" role="dialog" aria-modal="true" style="display: none;">
+        <div class="modal-content">
+            <h3 style="margin-top:0; color: #e53935; font-size: 1.5rem; margin-bottom: 10px;">Iniciar Jornada</h3>
+            <p class="modal-message" style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 20px;">
+                ¿Deseas iniciar labores?</p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                <button id="start-work-confirm" class="modal-button"
+                    style="background: linear-gradient(135deg,#28a745,#1e7e34);">Iniciar Labores</button>
+                <button id="start-work-cancel" class="modal-button"
+                    style="background: linear-gradient(135deg,#6c757d,#495057);">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación de Cierre -->
+    <div id="logout-confirm-modal" class="modal-overlay" role="dialog" aria-modal="true" style="display: none;">
+        <div class="modal-content">
+            <h3 style="margin-top:0; color: #e53935; font-size: 1.5rem; margin-bottom: 10px;">Finalizar Turno</h3>
+            <p id="logout-message" class="modal-message"
+                style="color: rgba(255,255,255,0.8); font-size: 1rem; margin-bottom: 20px;">
+                Al cerrar sesión estás indicando que ya terminaste tu horario de trabajo. ¿Deseas finalizar?
+            </p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                <button id="logout-confirm-btn" class="modal-button"
+                    style="background: linear-gradient(135deg,#e53935,#b71c1c);">Aceptar y Salir</button>
+                <button id="logout-cancel-btn" class="modal-button"
+                    style="background: linear-gradient(135deg,#6c757d,#495057);">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Genérico de Notificación -->
+    <div id="notification-modal" class="modal-overlay" role="dialog" aria-modal="true" style="display: none;">
+        <div class="modal-content" style="padding: 2rem;">
+            <div style="font-size: 3rem; margin-bottom: 10px;">✅</div>
+            <h3 id="notification-title" style="margin-top:0; color: #28a745; font-size: 1.5rem; margin-bottom: 12px;">
+                ¡Éxito!</h3>
+            <p id="notification-message" class="modal-message"
+                style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 20px;">
+                Operación realizada correctamente.
+            </p>
+            <button id="notification-ok-btn" class="modal-button"
+                style="background: linear-gradient(135deg,#28a745,#1e7e34); width: 100%; max-width: 200px;">Aceptar</button>
+        </div>
+    </div>
+
+    <style>
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+</body>
+
+</html>

@@ -1,0 +1,446 @@
+/* =====================================================
+   evidencia-ejercicios.css — Azul Corporativo Premium
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+  --primary: #1565C0;
+  --primary-dark: #0D47A1;
+  --accent: #64B5F6;
+  --success: #2E7D32;
+  --success-lt: #388E3C;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bd: rgba(255, 255, 255, 0.13);
+  --text: #f0f6ff;
+  --muted: rgba(255, 255, 255, 0.5);
+  --tr: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(21, 101, 192, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 85%, rgba(13, 71, 161, 0.12) 0%, transparent 55%),
+    linear-gradient(160deg, #020d1f 0%, #051a3a 50%, #020a18 100%);
+}
+
+/* Cuadrícula de puntos */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === Tarjeta principal === */
+.evi-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid var(--glass-bd);
+  border-radius: 24px;
+  padding: clamp(1.4rem, 5vw, 2.2rem);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  animation: cardIn 0.7s ease both;
+  overflow: hidden;
+}
+
+/* Línea de brillo azul superior */
+.evi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(21, 101, 192, 0.75), transparent);
+  pointer-events: none;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* === Encabezado === */
+.evi-header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.evi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(21, 101, 192, 0.15);
+  border: 1px solid rgba(21, 101, 192, 0.35);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.28rem 0.9rem;
+  border-radius: 100px;
+  margin-bottom: 0.7rem;
+  animation: badgePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(21, 101, 192, 0.35);
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(21, 101, 192, 0);
+  }
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: dotBlink 1.2s steps(1, start) infinite;
+}
+
+@keyframes dotBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.evi-name {
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  font-weight: 700;
+  color: var(--text);
+  text-shadow: 0 2px 16px rgba(21, 101, 192, 0.3);
+}
+
+/* === Campo de Rutina === */
+.field-group {
+  margin-bottom: 1.4rem;
+}
+
+.field-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.4px;
+  margin-bottom: 0.55rem;
+}
+
+.label-icon {
+  font-size: 1rem;
+}
+
+/* Select personalizado */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 12px;
+  padding: 0.85rem 2.5rem 0.85rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.97rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--tr), box-shadow var(--tr), background var(--tr);
+  outline: none;
+}
+
+.select-wrapper select option {
+  background: #0a1929;
+  color: var(--text);
+  padding: 0.5rem;
+}
+
+.select-wrapper select:focus {
+  border-color: rgba(21, 101, 192, 0.55);
+  background: rgba(21, 101, 192, 0.08);
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.2);
+}
+
+.select-wrapper select:hover {
+  border-color: rgba(21, 101, 192, 0.35);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  color: var(--accent);
+  pointer-events: none;
+  transition: transform var(--tr);
+}
+
+.select-wrapper:focus-within .select-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* === Vista previa de foto === */
+.photo-preview-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.5rem;
+  border: 1.5px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  width: 100%;
+  color: var(--muted);
+  transition: border-color var(--tr);
+}
+
+.photo-placeholder:has(~ img[style*="block"]) {
+  display: none;
+}
+
+.placeholder-icon {
+  font-size: 2rem;
+  opacity: 0.5;
+}
+
+.photo-placeholder p {
+  font-size: 0.8rem;
+  letter-spacing: 0.3px;
+}
+
+#photo-preview {
+  display: none;
+  width: 100%;
+  max-width: 220px;
+  border-radius: 14px;
+  border: 2px solid rgba(21, 101, 192, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 4px rgba(21, 101, 192, 0.1);
+  animation: fadeImg 0.5s ease;
+}
+
+@keyframes fadeImg {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === Botones === */
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.85rem 1rem;
+  transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s;
+  border-radius: 12px;
+}
+
+.btn:hover::after {
+  opacity: 1;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn-icon {
+  font-size: 1.1rem;
+}
+
+/* Cámara — Azul corporativo */
+.btn-camera {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(21, 101, 192, 0.45);
+}
+
+.btn-camera:hover {
+  box-shadow: 0 10px 30px rgba(21, 101, 192, 0.65);
+}
+
+/* Enviar — Verde operativo */
+.btn-send {
+  background: linear-gradient(135deg, var(--success-lt), var(--success));
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.45);
+}
+
+.btn-send:hover {
+  box-shadow: 0 10px 30px rgba(46, 125, 50, 0.65);
+}
+
+/* Volver — Neutro */
+.btn-back {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 0.7rem;
+  border-radius: 10px;
+  transition: background var(--tr), color var(--tr), transform var(--tr);
+}
+
+.btn-back:hover {
+  background: rgba(21, 101, 192, 0.12);
+  border-color: rgba(21, 101, 192, 0.3);
+  color: var(--text);
+  transform: translateY(-1px);
+  box-shadow: none;
+}
+
+.btn-back::after {
+  display: none;
+}
+
+/* Overlay de cámara */
+.capture-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.93);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.capture-container video {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 14px;
+  border: 2px solid rgba(21, 101, 192, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Loader */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+
+.fullscreen-loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 20, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.fullscreen-loader .loader {
+  width: 50px;
+  height: 50px;
+  border-width: 5px;
+}
+
+/* === Responsive === */
+@media (max-width: 420px) {
+  .evi-card {
+    border-radius: 18px;
+    padding: 1.2rem;
+  }
+
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}

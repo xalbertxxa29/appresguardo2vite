@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liderman Resguardo</title>
+  <meta name="description" content="Seguridad de personal de Resguardo Liderman." />
+  <meta name="keywords" content="Liderman, Alarmas, Login, Dashboard, Seguridad" />
+  <meta name="author" content="Liderman tecnologia" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/styles.css" />
+  <link rel="stylesheet" href="./src/loader-overlay.css" />
+  <style>
+    input::-ms-clear,
+    input::-ms-reveal,
+    input::-webkit-search-decoration,
+    input::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    .remember-me label {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+
+    <!-- Logo de empresa -->
+    <img class="company-logo" src="/imagenes/logo.webp" alt="Liderman" />
+
+    <!-- Título con sirena -->
+    <h1 class="login-title">
+      Liderman&nbsp;
+      <span class="resguardo-text">Resguardo</span>
+      <span class="siren"></span>
+    </h1>
+
+    <div class="login-card">
+      <form id="login-form" aria-label="Formulario de inicio de sesión">
+        <div class="input-group">
+          <label for="username">DNI</label>
+          <input type="text" id="username" required placeholder="Ingresa tu DNI" autocomplete="username">
+        </div>
+        <div class="input-group password-field">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" required placeholder="••••••••">
+          <button type="button" id="togglePassword" aria-label="Mostrar contraseña">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </button>
+        </div>
+        <div class="remember-me">
+          <input type="checkbox" id="remember">
+          <label for="remember">Recordarme</label>
+        </div>
+        <button id="login-btn" type="submit">Iniciar sesión</button>
+      </form>
+      <div class="links"><a href="#">Políticas de Privacidad</a></div>
+      <div id="error-message" role="alert" aria-live="assertive"></div>
+    </div>
+  </div>
+
+  <!-- Overlay de carga (reemplazado por loader-overlay.js) -->
+  <div id="loadingOverlay" hidden></div>
+
+  <div class="modal-overlay" id="errorModal" tabindex="-1">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar modal">&times;</button>
+      <p id="modalMessage"></p>
+    </div>
+  </div>
+
+  <script type="module" src="./src/script.js"></script>
+</body>
+
+</html>

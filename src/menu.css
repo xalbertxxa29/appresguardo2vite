@@ -1,0 +1,576 @@
+/* =====================================================
+   menu.css — Azul Corporativo + Blanco
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+/* === Variables Azul Corporativo === */
+:root {
+  --primary: #1565C0;
+  --primary-dark: #0D47A1;
+  --primary-deep: #082a66;
+  --accent: #64B5F6;
+  --gold: #e8f4ff;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-bd: rgba(255, 255, 255, 0.18);
+  --text: #f0f6ff;
+  --tr: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* === Reset === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* === Fondo dark azul animado === */
+html,
+body {
+  height: 100%;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 25% 10%, rgba(21, 101, 192, 0.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 90%, rgba(13, 71, 161, 0.18) 0%, transparent 55%),
+    linear-gradient(160deg, #020d1f 0%, #051a3a 50%, #020a18 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  color: var(--text);
+  animation: fadeInPage 0.8s ease both;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Cuadrícula de puntos decorativos */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === Contenedor principal === */
+.menu-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  width: 90%;
+  max-width: 440px;
+  margin: 1rem;
+  animation: containerIn 0.7s 0.1s ease both;
+}
+
+@keyframes containerIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Encabezado sirena + saludo === */
+.status-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.8rem;
+  gap: 0.5rem;
+}
+
+/* Sirena estroboscópica — color controlado por Firebase vía menu.js */
+.siren {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--siren-color, #64B5F6);
+  box-shadow: 0 0 8px var(--siren-color, #64B5F6), 0 0 16px rgba(var(--siren-rgb, 100, 181, 246), 0.5);
+  animation: siren-strobe 0.5s steps(2, start) infinite;
+}
+
+@keyframes siren-strobe {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+#status-message {
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+}
+
+.welcome-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(255, 255, 255, 0.6);
+  width: 0;
+  animation: typewriter 1.8s steps(30, end) 0.5s forwards, blinkCursor 0.7s step-end infinite 0.5s;
+}
+
+@keyframes typewriter {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinkCursor {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* === Área de botones === */
+.menu-buttons {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(0, 0, 20, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  animation: buttonsIn 0.6s 0.3s ease both;
+}
+
+@keyframes buttonsIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Línea de brillo azul superior */
+.menu-buttons::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(21, 101, 192, 0.7), transparent);
+}
+
+/* === Botón del menú === */
+.menu-button {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition:
+    transform var(--tr),
+    box-shadow var(--tr),
+    background var(--tr),
+    border-color var(--tr);
+  text-align: left;
+}
+
+/* Acento izquierdo azul */
+.menu-button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--primary), var(--accent));
+  border-radius: 0 4px 4px 0;
+  transform: scaleY(0);
+  transition: transform 0.25s ease;
+}
+
+/* Brillo interior en hover */
+.menu-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: 14px;
+}
+
+.menu-button:hover {
+  transform: translateX(6px) scale(1.012);
+  background: linear-gradient(135deg,
+      rgba(21, 101, 192, 0.22) 0%,
+      rgba(255, 255, 255, 0.03) 100%);
+  border-color: rgba(21, 101, 192, 0.45);
+  box-shadow:
+    0 8px 28px rgba(21, 101, 192, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.menu-button:hover::before {
+  transform: scaleY(1);
+}
+
+.menu-button:hover::after {
+  opacity: 1;
+}
+
+.menu-button:active {
+  transform: translateX(4px) scale(0.98);
+}
+
+/* Ícono en círculo azul */
+.menu-button .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 10px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 14px rgba(21, 101, 192, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.menu-button:hover .icon {
+  transform: rotate(-8deg) scale(1.12);
+  box-shadow: 0 6px 20px rgba(21, 101, 192, 0.7);
+}
+
+.menu-button .text {
+  flex: 1;
+}
+
+/* Animaciones de entrada */
+.menu-button:nth-child(1) {
+  animation: slideBtn 0.4s 0.35s both;
+}
+
+.menu-button:nth-child(2) {
+  animation: slideBtn 0.4s 0.42s both;
+}
+
+.menu-button:nth-child(3) {
+  animation: slideBtn 0.4s 0.49s both;
+}
+
+.menu-button:nth-child(4) {
+  animation: slideBtn 0.4s 0.56s both;
+}
+
+.menu-button:nth-child(5) {
+  animation: slideBtn 0.4s 0.63s both;
+}
+
+@keyframes slideBtn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Ripple wave */
+.ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0);
+  animation: rippleAnimate 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnimate {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* =====================================================
+   ZONA DE CIERRE DE SESIÓN — Zona de Riesgo (rojo)
+   ===================================================== */
+.logout-zone {
+  margin-top: 1.2rem;
+  width: 100%;
+}
+
+.logout-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.logout-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(229, 57, 53, 0.4), transparent);
+}
+
+.logout-divider-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(229, 57, 53, 0.65);
+  white-space: nowrap;
+}
+
+#logout-btn {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.3rem;
+  background: linear-gradient(135deg, #b71c1c 0%, #7f0000 100%);
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(183, 28, 28, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: transform var(--tr), box-shadow var(--tr), filter var(--tr);
+}
+
+#logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12), transparent);
+  border-radius: 14px 14px 0 0;
+  pointer-events: none;
+}
+
+#logout-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.18) 50%, transparent 65%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+#logout-btn:hover::after {
+  transform: translateX(100%);
+}
+
+#logout-btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(183, 28, 28, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+#logout-btn:active {
+  transform: scale(0.97);
+}
+
+.logout-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s, background 0.3s;
+}
+
+#logout-btn:hover .logout-icon-wrap {
+  background: rgba(0, 0, 0, 0.45);
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.logout-label {
+  flex: 1;
+  text-align: left;
+}
+
+.logout-arrow {
+  font-size: 1.1rem;
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+#logout-btn:hover .logout-arrow {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.logout-zone {
+  animation: slideBtn 0.4s 0.75s both;
+}
+
+/* === Modales Corporativos (azul oscuro) === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #0a1929, #051226);
+  border: 1px solid rgba(21, 101, 192, 0.25);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(100, 181, 246, 0.1);
+  max-width: 90%;
+  width: 360px;
+  color: var(--text);
+  animation: modalIn 0.3s ease both;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.modal-button:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.modal-button:active {
+  transform: scale(0.96);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .menu-container {
+    padding: clamp(1.2rem, 5vw, 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-container {
+    border-radius: 20px;
+    margin: 0.5rem;
+  }
+
+  .menu-buttons {
+    padding: 1.2rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .menu-button {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .menu-button .icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+}

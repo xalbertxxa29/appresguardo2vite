@@ -1,0 +1,158 @@
+/* =====================================================
+   loader-overlay.css — Espirales Azul Corporativo
+   ===================================================== */
+
+#loader-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(ellipse at center, #020d1f 0%, #010810 100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#loader-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.loader-inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* Logo */
+.loader-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 16px;
+    z-index: 2;
+    animation: logoPulse 1.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 14px rgba(21, 101, 192, 0.8));
+}
+
+@keyframes logoPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(21, 101, 192, 0.6));
+    }
+
+    50% {
+        transform: scale(1.12);
+        filter: drop-shadow(0 0 30px rgba(100, 181, 246, 0.95));
+    }
+}
+
+/* Espiral base */
+.loader-spiral {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Espiral 1 — Grande, azul corporativo */
+.spiral-1 {
+    width: 140px;
+    height: 140px;
+    border-top-color: #1565C0;
+    border-right-color: rgba(21, 101, 192, 0.3);
+    border-width: 3px;
+    animation: spin1 0.7s linear infinite;
+}
+
+/* Espiral 2 — Mediana, azul cian */
+.spiral-2 {
+    width: 112px;
+    height: 112px;
+    border-bottom-color: #64B5F6;
+    border-left-color: rgba(100, 181, 246, 0.25);
+    border-width: 3px;
+    animation: spin2 0.5s linear infinite;
+}
+
+/* Espiral 3 — Pequeña, azul eléctrico */
+.spiral-3 {
+    width: 88px;
+    height: 88px;
+    border-top-color: #29B6F6;
+    border-right-color: rgba(41, 182, 246, 0.25);
+    border-width: 2.5px;
+    animation: spin1 0.4s linear infinite reverse;
+}
+
+/* Espiral 4 — Exterior, blanco sutil */
+.spiral-4 {
+    width: 168px;
+    height: 168px;
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+    border-left-color: rgba(255, 255, 255, 0.06);
+    border-width: 1.5px;
+    animation: spin2 1.2s linear infinite;
+}
+
+@keyframes spin1 {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes spin2 {
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+/* Texto de carga */
+.loader-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    z-index: 2;
+}
+
+.loader-text::after {
+    content: '';
+    display: inline-block;
+    width: 1.2em;
+    animation: dots 1.4s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: '';
+    }
+
+    25% {
+        content: '.';
+    }
+
+    50% {
+        content: '..';
+    }
+
+    75% {
+        content: '...';
+    }
+
+    100% {
+        content: '';
+    }
+}
