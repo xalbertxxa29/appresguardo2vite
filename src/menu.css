@@ -118,8 +118,8 @@ body::before {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: var(--siren-color, #64B5F6);
-  box-shadow: 0 0 8px var(--siren-color, #64B5F6), 0 0 16px rgba(var(--siren-rgb, 100, 181, 246), 0.5);
+  background: var(--siren-color, #999);
+  box-shadow: 0 0 8px var(--siren-color, #999), 0 0 16px rgba(var(--siren-rgb, 153, 153, 153), 0.5);
   animation: siren-strobe 0.5s steps(2, start) infinite;
 }
 
